@@ -27,3 +27,16 @@ replaced_airquality <- replace_na_ozone(airquality)
 head(replaced_airquality)
 ```
 
+```{r}
+#Function converts the 'temp' column from Fahrenheit to celsius
+convert_temp <- function(data) {
+  data$Temp <- (data$Temp - 32) * 5 / 9
+  return(data)
+}
+
+# Load the built-in R air quality dataset and apply the function
+changed_airquality <- convert_temp(airquality)
+
+head(changed_airquality)
+
+```
