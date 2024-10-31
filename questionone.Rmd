@@ -8,28 +8,33 @@ date: "2024-10-29"
 
 
 ```{r}
-# Function fills the missing Ozone values in the dataset with the column's mean
+# New function taking data as input to replace NA/missing values with the mean of non-NA values in the column Ozone
 replace_na_ozone <- function(data) {
+  #Identifies NA values in the Ozone column, calculates the mean of non-NA values, which is then used to replace with this mean
   data$Ozone[is.na(data$Ozone)] <- mean(data$Ozone, na.rm = TRUE)
+  #Return changed data
   return(data)
 }
 
 # Load the built-in R airquality dataset and apply the function
 replaced_airquality <- replace_na_ozone(airquality)
 
+#Display first few rows of changed dataset
 head(replaced_airquality)
 ```
 
 ```{r}
-#Function converts the 'temp' column from Fahrenheit to celsius
+#New function converts the column temp from Fahrenheit to celsius
 convert_temp <- function(data) {
   data$Temp <- (data$Temp - 32) * 5 / 9
+  #Return changed data
   return(data)
 }
 
 # Load the built-in R air quality dataset and apply the function
 changed_airquality <- convert_temp(airquality)
 
+#Display first few rows of changed dataset
 head(changed_airquality)
 
 ```
